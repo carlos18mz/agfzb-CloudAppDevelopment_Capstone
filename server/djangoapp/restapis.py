@@ -5,10 +5,9 @@ from .models import CarMake, CarModel, CarDealer, DealerReview
 
 from requests.auth import HTTPBasicAuth
 
-
-api_key = "HI-H3s5bmcSqfdX6leH3lBMwk3axiWhsoKDRNtMrC_AS"
-urlnlu = "https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/a5afa9da-db34-4aff-9356-813fa833e5e5/v1/analyze?version=2020-08-01"
-
+API_KEY="MxFCXuNdAY4i7RdB1PTx0LGspyMbNVmVOKxtpJ5XPxkz"
+NLU_URL='https://api.us-south.natural-language-understanding.watson.cloud.ibm.com/instances/93a549ab-8f15-404e-a8ed-97f6fb8a35aa/v1/analyze?version=2020-08-01'
+  
 # e.g., response = requests.get(url, params=params, headers={'Content-Type': 'application/json'},
 #                                     auth=HTTPBasicAuth('apikey', api_key))
 def get_request(url, **kwargs):
@@ -22,8 +21,8 @@ def get_request(url, **kwargs):
   response = None
   try:
     # Call get method of requests library with URL and parameters
-    if(api_key):
-      response = requests.get(url, params=kwargs, headers={'Content-Type': 'application/json'},auth=HTTPBasicAuth('apikey', api_key))
+    if(API_KEY):
+      response = requests.get(url, params=kwargs, headers={'Content-Type': 'application/json'},auth=HTTPBasicAuth('apikey', API_KEY))
     else:
       response = requests.get(url, params=kwargs, headers={'Content-Type': 'application/json'})
   
@@ -96,8 +95,8 @@ def get_dealer_reviews_from_cf(url, dealerId):
 def analyze_review_sentiments(dealerreview, **kwargs):
   #get_request(urlnlu)
   params = json.dumps({"text": dealerreview, "features": {"sentiment": {}}})
-  response = requests.post(urlnlu, params=params, headers={'Content-Type': 'application/json'},
-                                    auth=HTTPBasicAuth('apikey', api_key))
+  response = requests.post(NLU_URL, params=params, headers={'Content-Type': 'application/json'},
+                                    auth=HTTPBasicAuth('apikey', API_KEY))
   try:
     sentiment=response.json()['sentiment']['document']['label']
     return sentiment

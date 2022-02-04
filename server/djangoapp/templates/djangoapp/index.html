@@ -23,15 +23,6 @@
       
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <!--<li class="nav-item active">
-              <a class="nav-link" href="/djangoapp">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/djangoapp/about">About</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" href="/djangoapp/contact" >Contact</a>
-            </li>-->
             DealerShip Review
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -42,13 +33,13 @@
             </li>
             {% else %}
             <li>
-                <form class="form-inline" action="{% url 'onlinecourse:login' %}" method="post">
+                <form class="form-inline" action="{% url 'djangoapp:login' %}" method="post">
                     {% csrf_token %}
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Username" name="username" >
                         <input type="password" class="form-control" placeholder="Username" name="psw" >
                         <button class="btn btn-primary" type="submit">Login</button>
-                        <a class="btn btn-link" href="{% url 'onlinecourse:registration' %}">Sign Up</a>
+                        <a class="btn btn-link" href="{% url 'djangoapp:registration' %}">Sign Up</a>
                     </div>
                 </form>
             </li>
@@ -94,5 +85,10 @@
       </div>
     </footer>
 </body>
-
+<script>
+  $(function() {
+    $('#table').bootstrapTable()
+  })
+  
+</script>
 </html>

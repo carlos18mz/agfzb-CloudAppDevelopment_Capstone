@@ -31,7 +31,7 @@ def static(request):
 # Create a `login_request` view to handle sign in request
 def login_request(request):
     context = {}
-    url = "https://19f6fe67.us-south.apigw.appdomain.cloud/api/dealership"
+    url = "https://08663624.us-south.apigw.appdomain.cloud/api/dealership"
     dealerships = get_dealers_from_cf(url)
     # Concat all dealer's short name
     context["dealership_list"]=dealerships
@@ -52,7 +52,7 @@ def login_request(request):
 def logout_request(request):
     context = {}
     if request.method == "GET":
-        url = "https://19f6fe67.us-south.apigw.appdomain.cloud/api/dealership"
+        url = "https://08663624.us-south.apigw.appdomain.cloud/api/dealership"
         dealerships = get_dealers_from_cf(url)
         context["dealership_list"]=dealerships
         logout(request)
@@ -93,7 +93,7 @@ def registration_request(request):
 def get_dealerships(request):
     if request.method == "GET":
         context={}
-        url = "https://19f6fe67.us-south.apigw.appdomain.cloud/api/dealership"
+        url = "https://08663624.us-south.apigw.appdomain.cloud/api/dealership"
         apikey="_xKRLnH-xVpGqx9u0VBB3dZUTVxhZ8JNVyxYY6ooCjB2"
         # Get dealers from the URL
         dealerships = get_dealers_from_cf(url)
@@ -109,7 +109,7 @@ def get_dealerships(request):
 def get_dealer_details(request, dealer_id):
     context={}
     if request.method == "GET":
-        url = "https://19f6fe67.us-south.apigw.appdomain.cloud/api/review"
+        url = "https://08663624.us-south.apigw.appdomain.cloud/api/review"
         apikey="_xKRLnH-xVpGqx9u0VBB3dZUTVxhZ8JNVyxYY6ooCjB2"
         dealer_reviews = get_dealer_reviews_from_cf(url,dealer_id)
         context["reviews"]=dealer_reviews
@@ -125,7 +125,7 @@ def add_review(request, dealer_id):
     context = {}
     # If it is a GET request, just render the add_review page
     if request.method == 'GET':
-        url = "https://19f6fe67.us-south.apigw.appdomain.cloud/api/dealership"
+        url = "https://08663624.us-south.apigw.appdomain.cloud/api/dealership"
         # Get dealers from the URL
         context = {
             "dealer_id": dealer_id,
@@ -158,7 +158,7 @@ def add_review(request, dealer_id):
                 review["car_make"]=None
                 review["car_model"]=None
                 review["car_year"]=None
-            json_result = post_request("https://19f6fe67.us-south.apigw.appdomain.cloud/api/review", review, dealerId=dealer_id)
+            json_result = post_request("https://08663624.us-south.apigw.appdomain.cloud/api/review", review, dealerId=dealer_id)
             print(json_result)
             if "error" in json_result:
                 context["message"] = "ERROR: Review was not submitted."
