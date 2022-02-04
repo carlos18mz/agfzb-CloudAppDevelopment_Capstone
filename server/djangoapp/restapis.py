@@ -22,8 +22,8 @@ def get_request(url, **kwargs):
   response = None
   try:
     # Call get method of requests library with URL and parameters
-    if(API_KEY):
-      response = requests.get(url, params=kwargs, headers={'Content-Type': 'application/json'},auth=HTTPBasicAuth('apikey', API_KEY))
+    if(api_key):
+      response = requests.get(url, params=kwargs, headers={'Content-Type': 'application/json'},auth=HTTPBasicAuth('apikey', api_key))
     else:
       response = requests.get(url, params=kwargs, headers={'Content-Type': 'application/json'})
   
